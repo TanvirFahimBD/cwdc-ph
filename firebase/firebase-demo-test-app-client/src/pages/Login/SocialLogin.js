@@ -3,8 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { USER_CONTEXT } from "../../context/UserContext";
 
 const SocialLogin = () => {
-  const { googleSignIn, setUser, error, setError, githubSignIn } =
-    useContext(USER_CONTEXT);
+  const {
+    googleSignIn,
+    setUser,
+    error,
+    setError,
+    githubSignIn,
+    success,
+    setSuccess,
+  } = useContext(USER_CONTEXT);
   const navigate = useNavigate();
 
   const handleGoogleSingIn = () => {
@@ -12,12 +19,14 @@ const SocialLogin = () => {
       .then((result) => {
         const user = result.user;
         setError("");
+        setSuccess("Successful login");
         setUser(user);
         navigate("/");
       })
       .catch((error) => {
         const errorMessage = error.message;
         setError(errorMessage);
+        setSuccess("");
       });
   };
 
@@ -45,6 +54,7 @@ const SocialLogin = () => {
           Github SignIn
         </button>
         {error && <p className="text-danger mt-4">{error}</p>}
+        {success && <p className="text-success mt-4">{success}</p>}
       </div>
     </div>
   );

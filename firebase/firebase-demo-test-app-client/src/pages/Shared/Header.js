@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import { USER_CONTEXT } from "../../context/UserContext";
 
 const Header = () => {
-  const { user, setUser, setError, logOut } = useContext(USER_CONTEXT);
+  const { user, setUser, setError, logOut, setSuccess } =
+    useContext(USER_CONTEXT);
 
   const handleLogout = () => {
     logOut()
       .then(() => {
         setUser({});
+        setSuccess("");
       })
       .catch((error) => {
         const errorMessage = error.message;

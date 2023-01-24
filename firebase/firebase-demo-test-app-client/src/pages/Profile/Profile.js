@@ -3,6 +3,7 @@ import { USER_CONTEXT } from "../../context/UserContext";
 
 const Profile = () => {
   const { user } = useContext(USER_CONTEXT);
+
   return (
     <div style={{ minHeight: "100vh" }}>
       <div className="border rounded shadow-lg m-5 p-4">

@@ -4,9 +4,11 @@ import {
   GithubAuthProvider,
   GoogleAuthProvider,
   onAuthStateChanged,
+  sendEmailVerification,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import React, { createContext, useState } from "react";
 import app from "../firebase/firebase.init";
@@ -16,6 +18,7 @@ export const USER_CONTEXT = createContext();
 const UserContext = ({ children }) => {
   const [user, setUser] = useState({});
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
@@ -33,6 +36,19 @@ const UserContext = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
+  const updateAccountProfile = (displayName, photoURL) => {
+    return updateProfile(auth.currentUser, {
+      displayName,
+      photoURL,
+    });
+  };
+
+  const verifyEmail = () => {
+    sendEmailVerification(auth.currentUser).then(() => {
+      setSuccess("Verification email sent");
+    });
+  };
+
   const login = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
@@ -44,7 +60,6 @@ const UserContext = ({ children }) => {
   const unsubscribe = onAuthStateChanged(auth, (user) => {
     if (user) {
       setUser(user);
-      const uid = user.uid;
     } else {
     }
   });
@@ -56,10 +71,14 @@ const UserContext = ({ children }) => {
     setUser,
     login,
     signUp,
+    updateAccountProfile,
     googleSignIn,
     githubSignIn,
+    verifyEmail,
     error,
     setError,
+    success,
+    setSuccess,
     logOut,
   };
 

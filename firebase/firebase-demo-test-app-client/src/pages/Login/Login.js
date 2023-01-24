@@ -6,7 +6,7 @@ import SocialLogin from "./SocialLogin";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login, setUser, setError } = useContext(USER_CONTEXT);
+  const { login, setUser, setError, setSuccess } = useContext(USER_CONTEXT);
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
@@ -15,12 +15,13 @@ const Login = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         setUser(user);
-        console.log("login success", user);
+        setSuccess("login successful");
         navigate("/");
       })
       .catch((error) => {
         const errorMessage = error.message;
         setError(errorMessage);
+        setSuccess("");
       });
   };
 
@@ -38,6 +39,7 @@ const Login = () => {
             type="email"
             name="email"
             placeholder="Enter email"
+            required
           />
           <label className="d-block">Password</label>
           <input
@@ -48,6 +50,7 @@ const Login = () => {
             type="password"
             name="password"
             placeholder="Enter Password"
+            required
           />
           <br />
           <input type="submit" value="Login" className="btn btn-primary my-2" />
