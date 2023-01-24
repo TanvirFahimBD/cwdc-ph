@@ -15,6 +15,7 @@ const Profile = () => {
           }
           className="rounded-pill"
           alt="profile_picture"
+          width={150}
         />
         <h5 className="my-4">Email: {user.email}</h5>
         <h3>Name: {user.displayName}</h3>

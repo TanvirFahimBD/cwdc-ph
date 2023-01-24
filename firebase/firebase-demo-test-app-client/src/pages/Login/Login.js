@@ -52,6 +52,11 @@ const Login = () => {
             placeholder="Enter Password"
             required
           />
+          <p>
+            <Link to="/forget-password" className="text-decoration-none">
+              Forget Password?
+            </Link>
+          </p>
           <br />
           <input type="submit" value="Login" className="btn btn-primary my-2" />
         </form>
@@ -59,7 +64,11 @@ const Login = () => {
       <SocialLogin />
       <hr />
       <p>
-        Don't have any Account? <Link to="/signup">Signup</Link> now
+        Don't have any Account?{" "}
+        <Link to="/signup" className="text-decoration-none">
+          Signup
+        </Link>{" "}
+        now
       </p>
     </div>
   );

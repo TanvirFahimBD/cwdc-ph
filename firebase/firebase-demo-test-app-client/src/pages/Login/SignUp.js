@@ -105,7 +105,11 @@ const SignUp = () => {
       <SocialLogin />
       <hr />
       <p>
-        Have Account? <Link to="/login">Login</Link> now
+        Have Account?{" "}
+        <Link to="/login" className="text-decoration-none">
+          Login
+        </Link>{" "}
+        now
       </p>
     </div>
   );
