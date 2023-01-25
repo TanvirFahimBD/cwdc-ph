@@ -4,8 +4,10 @@ import Home from "../../pages/Home/Home";
 import ForgetPassword from "../../pages/Login/ForgetPassword";
 import Login from "../../pages/Login/Login";
 import SignUp from "../../pages/Login/SignUp";
+import Products from "../../pages/Products/Products";
 import Profile from "../../pages/Profile/Profile";
 import PageNotFound from "../../pages/Shared/PageNotFound";
+import PrivateRoute from "../PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -21,8 +23,12 @@ export const router = createBrowserRouter([
         element: <Profile />,
       },
       {
-        path: "/",
-        element: <Home />,
+        path: "/products",
+        element: (
+          <PrivateRoute>
+            <Products />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",

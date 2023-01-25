@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { USER_CONTEXT } from "../../context/UserContext";
+import { USER_CONTEXT } from "../../contexts/UserContext";
 
 const Header = () => {
   const { user, setUser, setError, logOut, setSuccess } =
@@ -24,6 +24,9 @@ const Header = () => {
     <div className="my-3">
       <Link to="/" className="mx-3 text-decoration-none">
         Home
+      </Link>
+      <Link to="/products" className="mx-3 text-decoration-none">
+        Products
       </Link>
       {!user.uid && (
         <Link to="/login" className="mx-3 text-decoration-none">

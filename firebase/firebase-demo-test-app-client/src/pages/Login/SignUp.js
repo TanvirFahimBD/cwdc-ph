@@ -1,7 +1,6 @@
-import { sendEmailVerification, updateProfile } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { USER_CONTEXT } from "../../context/UserContext";
+import { USER_CONTEXT } from "../../contexts/UserContext";
 import SocialLogin from "./SocialLogin";
 
 const SignUp = () => {
@@ -25,10 +24,10 @@ const SignUp = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         setUser(user);
+        navigate("/");
         updateUserProfile(name, profileImage);
         verifyEmail();
         setSuccess("SignUp successful");
-        navigate("/");
       })
       .catch((error) => {
         const errorMessage = error.message;

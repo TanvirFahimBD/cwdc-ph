@@ -11,7 +11,7 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.init";
 
 export const USER_CONTEXT = createContext();
@@ -62,12 +62,15 @@ const UserContext = ({ children }) => {
     return signOut(auth);
   };
 
-  const unsubscribe = onAuthStateChanged(auth, (user) => {
-    if (user) {
-      setUser(user);
-    } else {
-    }
-  });
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user);
+      } else {
+      }
+    });
+    return () => unsubscribe();
+  }, [auth]);
 
   console.log("user from context", user);
 

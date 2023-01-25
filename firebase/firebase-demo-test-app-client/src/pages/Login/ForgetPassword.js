@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
-import { USER_CONTEXT } from "../../context/UserContext";
+import { Link } from "react-router-dom";
+import { USER_CONTEXT } from "../../contexts/UserContext";
 
 const ForgetPassword = () => {
   const [email, setEmail] = useState("");
@@ -40,6 +41,9 @@ const ForgetPassword = () => {
             className="btn btn-primary my-2"
           />
         </form>
+        <Link to="/login" className="text-decoration-none">
+          Go to login
+        </Link>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { USER_CONTEXT } from "../../context/UserContext";
+import { USER_CONTEXT } from "../../contexts/UserContext";
 
 const SocialLogin = () => {
   const {
