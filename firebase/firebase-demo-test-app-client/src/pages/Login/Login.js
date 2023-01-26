@@ -9,9 +9,7 @@ const Login = () => {
   const { login, setUser, setError, setSuccess } = useContext(USER_CONTEXT);
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location?.state?.from?.pathname || "/";
-
-  console.log("from", from);
+  let from = location.state?.from?.pathname || "/";
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -19,7 +17,7 @@ const Login = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         setUser(user);
-        navigate("/");
+        navigate(from, { replace: true });
         setSuccess("login successful");
       })
       .catch((error) => {
