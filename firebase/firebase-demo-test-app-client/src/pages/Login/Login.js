@@ -17,8 +17,8 @@ const Login = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         setUser(user);
-        navigate(from, { replace: true });
         setSuccess("login successful");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         const errorMessage = error.message;

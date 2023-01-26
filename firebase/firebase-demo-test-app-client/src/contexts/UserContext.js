@@ -18,6 +18,7 @@ export const USER_CONTEXT = createContext();
 
 const UserContext = ({ children }) => {
   const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -26,18 +27,22 @@ const UserContext = ({ children }) => {
   const githubProvider = new GithubAuthProvider();
 
   const googleSignIn = () => {
+    setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
 
   const githubSignIn = () => {
+    setLoading(true);
     return signInWithPopup(auth, githubProvider);
   };
 
   const signUp = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const updateAccountProfile = (displayName, photoURL) => {
+    setLoading(true);
     return updateProfile(auth.currentUser, {
       displayName,
       photoURL,
@@ -45,16 +50,19 @@ const UserContext = ({ children }) => {
   };
 
   const verifyEmail = () => {
+    setLoading(true);
     sendEmailVerification(auth.currentUser).then(() => {
       setSuccess("Verification email sent");
     });
   };
 
   const login = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   const passwordReset = (email) => {
+    setLoading(true);
     return sendPasswordResetEmail(auth, email);
   };
 
@@ -66,6 +74,7 @@ const UserContext = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
+        setLoading(false);
       } else {
       }
     });
@@ -86,6 +95,8 @@ const UserContext = ({ children }) => {
     passwordReset,
     error,
     setError,
+    loading,
+    setLoading,
     success,
     setSuccess,
     logOut,

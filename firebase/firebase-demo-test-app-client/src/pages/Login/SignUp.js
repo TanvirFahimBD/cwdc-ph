@@ -20,14 +20,15 @@ const SignUp = () => {
 
   const handleSignUp = (e) => {
     e.preventDefault();
+
     signUp(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         setUser(user);
-        navigate("/");
         updateUserProfile(name, profileImage);
         verifyEmail();
         setSuccess("SignUp successful");
+        navigate("/");
       })
       .catch((error) => {
         const errorMessage = error.message;

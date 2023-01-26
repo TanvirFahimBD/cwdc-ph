@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { USER_CONTEXT } from "../../contexts/UserContext";
 
 const SocialLogin = () => {
@@ -13,6 +13,10 @@ const SocialLogin = () => {
     setSuccess,
   } = useContext(USER_CONTEXT);
   const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+
+  console.log("from social", from);
 
   const handleGoogleSingIn = () => {
     googleSignIn()
@@ -21,7 +25,7 @@ const SocialLogin = () => {
         setError("");
         setSuccess("Successful login");
         setUser(user);
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -36,7 +40,7 @@ const SocialLogin = () => {
         const user = result.user;
         setError("");
         setUser(user);
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         const errorMessage = error.message;
