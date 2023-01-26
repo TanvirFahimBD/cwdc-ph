@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <div className=" container mx-auto d-flex justify-content-between  rounded-pill m-2 p-3 shadow-lg">
-      <div className="text-warning ms-3">Top News</div>
+      <div className="text-primary ms-3 fw-bold">Top News</div>
       <div>
         <Link to="/" className="mx-3 text-decoration-none">
           Home

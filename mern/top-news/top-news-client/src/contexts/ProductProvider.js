@@ -1,19 +1,9 @@
-import React, { createContext, useContext, useEffect } from "react";
-import { useState } from "react";
+import React, { createContext, useContext } from "react";
 
 export const PRODUCT_CONTEXT = createContext();
 
 const ProductProvider = ({ children }) => {
-  const [state, setState] = useState([]);
-  useEffect(() => {
-    fetch("https://fake-api.up.railway.app/pcProducts")
-      .then((res) => res.json())
-      .then((data) => {
-        setState(data);
-      });
-  }, []);
-
-  const value = { state, setState };
+  const value = { hi: "hi" };
 
   return (
     <PRODUCT_CONTEXT.Provider value={value}>
