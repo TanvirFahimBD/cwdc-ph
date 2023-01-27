@@ -17,7 +17,7 @@ const LeftSideNav = () => {
       <div className="text-start">
         {newsCategories.map((nc) => (
           <Link
-            to={`/category/${nc.id}`}
+            to={`/categories/${nc.id}`}
             key={nc.id}
             className="text-decoration-none d-block my-3"
           >
