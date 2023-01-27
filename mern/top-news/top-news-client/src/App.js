@@ -1,14 +1,16 @@
 import { RouterProvider } from "react-router-dom";
 import "./App.css";
-import ProductProvider from "./contexts/ProductProvider";
+import AuthProvider from "./contexts/AuthProvider";
 import { router } from "./routes/Router/Router";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <div className="App">
-      <ProductProvider>
+      <AuthProvider>
         <RouterProvider router={router}></RouterProvider>
-      </ProductProvider>
+        <Toaster />
+      </AuthProvider>
     </div>
   );
 }

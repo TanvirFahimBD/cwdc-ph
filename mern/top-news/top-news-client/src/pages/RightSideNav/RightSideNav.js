@@ -1,21 +1,49 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import { FaFacebookF } from "react-icons/fa";
-import { BsGoogle, BsTwitter, BsYoutube, BsTwitch } from "react-icons/bs";
+import {
+  BsGoogle,
+  BsTwitter,
+  BsYoutube,
+  BsTwitch,
+  BsGithub,
+} from "react-icons/bs";
 import Advertise from "./Advertise";
-import { useUser } from "../../contexts/ProductProvider";
+import { useUser } from "../../contexts/AuthProvider";
+import { useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 const RightSideNav = () => {
-  const { googleSignIn, setUser, user } = useUser();
+  const { googleSignIn, githubSignIn, user, setError } = useUser();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((result) => {
-        const user = result.user;
-        // setUser(user);
+        setError("");
+        toast.success("Google Login successful");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         const errorMessage = error.message;
+        toast.error(errorMessage);
+        setError(errorMessage);
+      });
+  };
+
+  const handleGithubSignIn = () => {
+    githubSignIn()
+      .then((result) => {
+        setError("");
+        toast.success("Github Login successful");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        toast.error(errorMessage);
+        setError(errorMessage);
       });
   };
 
@@ -27,9 +55,9 @@ const RightSideNav = () => {
             <BsGoogle className="me-3" />
             Login with Google
           </Button>
-          <Button className="d-block my-3">
-            <FaFacebookF className="me-3" />
-            Login with Facebook
+          <Button className="d-block my-3" onClick={handleGithubSignIn}>
+            <BsGithub className="me-3" />
+            Login with Github
           </Button>
         </div>
       )}

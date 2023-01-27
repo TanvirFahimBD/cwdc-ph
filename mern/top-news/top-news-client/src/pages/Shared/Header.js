@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { useUser } from "../../contexts/ProductProvider";
+import { useUser } from "../../contexts/AuthProvider";
 import { Button } from "react-bootstrap";
 
 const Header = () => {
-  const { user, setUser, logOut, loading, setLoading } = useUser();
+  const { user, setUser, logOut } = useUser();
 
   const handleLogOut = () => {
     logOut()
@@ -30,7 +30,11 @@ const Header = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto"></Nav>
           <Nav>
-            {!user.uid && <Nav.Link>Login</Nav.Link>}
+            {!user.uid && (
+              <Link to="/login" className="text-decoration-none">
+                Login
+              </Link>
+            )}
             {user.uid && (
               <>
                 <Nav.Link className="mt-2">
