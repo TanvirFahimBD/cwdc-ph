@@ -3,7 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Layout/Main";
 import Category from "../../pages/Category/Category";
 import Home from "../../pages/Home";
-import News from "../../pages/News/News";
+import NewsCardDetails from "../../pages/Shared/NewsCardDetails";
 import NotFoundPage from "../../pages/Shared/NotFoundPage";
 
 export const router = createBrowserRouter([
@@ -24,7 +24,9 @@ export const router = createBrowserRouter([
       },
       {
         path: "/news/:id",
-        element: <News />,
+        element: <NewsCardDetails />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/news/${params.id}`),
       },
       {
         path: "*",
