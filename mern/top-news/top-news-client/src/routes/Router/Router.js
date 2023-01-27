@@ -6,6 +6,7 @@ import Home from "../../pages/Home";
 import ForgetPassword from "../../pages/Login/ForgetPassword";
 import Login from "../../pages/Login/Login";
 import Register from "../../pages/Login/Register";
+import Profile from "../../pages/Profile";
 import NewsCardDetails from "../../pages/Shared/NewsCardDetails";
 import NotFoundPage from "../../pages/Shared/NotFoundPage";
 import PrivateRoute from "../PrivateRoute";
@@ -51,6 +52,10 @@ export const router = createBrowserRouter([
       {
         path: "/forget-password",
         element: <ForgetPassword />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
       },
       {
         path: "*",

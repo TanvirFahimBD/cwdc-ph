@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -37,9 +36,9 @@ const Header = () => {
             )}
             {user.uid && (
               <>
-                <Nav.Link className="mt-2">
+                <Link to="/profile" className="m-2 text-decoration-none">
                   {user.displayName ? user.displayName : " Profile"}
-                </Nav.Link>
+                </Link>
                 {user.displayName && (
                   <img
                     className=""
@@ -47,7 +46,9 @@ const Header = () => {
                     alt=""
                   />
                 )}
-                <Button onClick={handleLogOut}>Logout</Button>
+                <Link to="/login">
+                  <Button onClick={handleLogOut}>Logout</Button>
+                </Link>
               </>
             )}
           </Nav>

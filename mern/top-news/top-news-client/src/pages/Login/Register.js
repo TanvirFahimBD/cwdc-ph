@@ -20,7 +20,9 @@ const Register = () => {
         updateProfile(name, profileImg);
         sendVerifyEmail();
         setError("");
-        toast.success("Registration successful");
+        toast.success(
+          "Registration successful. Now verify email first then use"
+        );
         navigate("/");
       })
       .catch((error) => {
