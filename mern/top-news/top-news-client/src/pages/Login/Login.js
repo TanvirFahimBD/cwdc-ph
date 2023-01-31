@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "../../contexts/AuthProvider";
+import useTitle from "../../hooks/useTitle";
 
 const Login = () => {
+  useTitle("Login");
   const { userSignIn, error, setError } = useUser();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

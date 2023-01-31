@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "../../contexts/AuthProvider";
+import useTitle from "../../hooks/useTitle";
 
 const ForgetPassword = () => {
+  useTitle("Reset Password");
   const { resetPassword, error, setError } = useUser();
   const [email, setEmail] = useState("");
   const navigate = useNavigate();

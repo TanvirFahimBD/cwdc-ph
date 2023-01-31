@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { useUser } from "../../contexts/AuthProvider";
+import useTitle from "../../hooks/useTitle";
 
 const Register = () => {
+  useTitle("Register");
   const { userRegister, profileUpdate, error, setError, verifyEmail } =
     useUser();
   const [name, setName] = useState("");

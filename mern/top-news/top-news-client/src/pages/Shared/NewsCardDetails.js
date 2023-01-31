@@ -4,10 +4,12 @@ import { BiShareAlt } from "react-icons/bi";
 import { GrView } from "react-icons/gr";
 import { AiFillStar } from "react-icons/ai";
 import { useLoaderData } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 
 function NewsCardDetails() {
   const newsDetails = useLoaderData();
   const { total_view, rating, title, image_url, author, details } = newsDetails;
+  useTitle(title);
 
   return (
     <Card className="text-center my-4">

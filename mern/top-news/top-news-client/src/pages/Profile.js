@@ -1,8 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useUser } from "../contexts/AuthProvider";
+import useTitle from "../hooks/useTitle";
 
 const Profile = () => {
+  useTitle("Profile");
   const { user, profileUpdate } = useUser();
   const [name, setName] = useState(user.displayName);
   const [photoURL, setPhotoURL] = useState(user.photoURL);
