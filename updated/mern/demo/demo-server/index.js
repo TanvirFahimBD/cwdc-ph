@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 require("dotenv").config();
 
 const app = express();
@@ -21,7 +21,7 @@ async function run() {
   try {
     const usersCollection = client.db("demoDb").collection("users");
 
-    //GET USER
+    //GET USERS
     app.get("/users", async (req, res) => {
       const users = await usersCollection.find({}).toArray();
       if (req.query.name) {
@@ -35,10 +35,44 @@ async function run() {
       }
     });
 
+    //GET USER
+    app.get("/users/:id", async (req, res) => {
+      const query = { _id: new ObjectId(req.params.id) };
+      const result = await usersCollection.findOne(query);
+      res.send(result);
+    });
+
     //POST USER
     app.post("/users", async (req, res) => {
       const user = req.body;
       const result = await usersCollection.insertOne(user);
+      res.send(result);
+    });
+
+    //DELETE USER
+    app.delete("/users/:id", async (req, res) => {
+      const id = req.params.id;
+      const result = await usersCollection.deleteOne({ _id: new ObjectId(id) });
+      res.send(result);
+    });
+
+    //PUT USER
+    app.put("/users/:id", async (req, res) => {
+      const id = req.params.id;
+      const user = req.body;
+      const filter = { _id: new ObjectId(id) };
+      const updateDoc = {
+        $set: {
+          email: user.email,
+          name: user.name,
+        },
+      };
+      const options = { upsert: true };
+      const result = await usersCollection.updateOne(
+        filter,
+        updateDoc,
+        options
+      );
       res.send(result);
     });
   } finally {
