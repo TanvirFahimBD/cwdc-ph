@@ -1,0 +1,38 @@
+[
+  {
+    "_id": "63e60fc0325ef84b7284e98c",
+    "picture": "https://i.ibb.co/yfP34jb/service-6.jpg",
+    "name": "Car Lester",
+    "price": 34
+  },
+  {
+    "_id": "63e60fc04692e815f1bfded9",
+    "picture": "https://i.ibb.co/tMm95yc/service-5.jpg",
+    "name": "Car Romero",
+    "price": 27
+  },
+  {
+    "_id": "63e60fc0087cd14de92006b0",
+    "picture": "https://i.ibb.co/xCD7x13/service-4.jpg",
+    "name": "Car Cobb",
+    "price": 33
+  },
+  {
+    "_id": "63e60fc0dd39d1cc618da30d",
+    "picture": "https://i.ibb.co/0p7J2Fw/service-3.jpg",
+    "name": "Car Medina",
+    "price": 21
+  },
+  {
+    "_id": "63e60fc0e1e16385a7bf5e9e",
+    "picture": "https://i.ibb.co/47cJkbr/service-2.jpg",
+    "name": "Car Stark",
+    "price": 37
+  },
+  {
+    "_id": "63e60fc069d199cb8f59fa08",
+    "picture": "https://i.ibb.co/7btX8vF/service-1.jpg",
+    "name": "Car Fischer",
+    "price": 28
+  }
+]

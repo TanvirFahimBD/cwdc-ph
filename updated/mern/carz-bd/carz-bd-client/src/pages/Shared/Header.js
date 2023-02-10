@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const sharedContent = (
     <>
-      <Link to="/">Home</Link>
+      <Link to="/" className="btn btn-ghost">
+        Home
+      </Link>
     </>
   );
   return (
@@ -40,7 +42,7 @@ const Header = () => {
           <ul className="menu menu-horizontal px-1">{sharedContent}</ul>
         </div>
         <div className="navbar-end">
-          <Link to="/login" className="btn">
+          <Link to="/login" className="btn btn-success text-white">
             APPOINTMENT
           </Link>
         </div>
