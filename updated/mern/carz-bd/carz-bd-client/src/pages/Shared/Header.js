@@ -34,7 +34,10 @@ const Header = () => {
               {sharedContent}
             </ul>
           </div>
-          <Link to="/" className="btn btn-ghost normal-case text-xl">
+          <Link
+            to="/"
+            className="btn btn-ghost normal-case text-xl text-green-400"
+          >
             CarzBd
           </Link>
         </div>
@@ -43,7 +46,7 @@ const Header = () => {
         </div>
         <div className="navbar-end">
           <Link to="/login" className="btn btn-success text-white">
-            APPOINTMENT
+            Login
           </Link>
         </div>
       </div>
