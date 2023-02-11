@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const Header = () => {
+  const { user } = useContext(AuthContext);
   const sharedContent = (
     <>
       <Link to="/" className="btn btn-ghost">
@@ -38,7 +40,7 @@ const Header = () => {
             to="/"
             className="btn btn-ghost normal-case text-xl text-green-400"
           >
-            CarzBd
+            CarzBd by {user.name}
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">

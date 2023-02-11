@@ -17,14 +17,23 @@ const SignUp = () => {
   return (
     <div>
       <div className="hero-content flex-col lg:flex-row">
-        <div className="text-center lg:text-left w-1/2">
-          <img src="https://i.ibb.co/XXvbnc6/Mobile-login-bro.png" alt="" />
-        </div>
         <form
           className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100"
           onSubmit={handleSignUp}
         >
           <div className="card-body">
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Name</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Name"
+                name="name"
+                className="input input-bordered"
+                onBlur={handleBlur}
+              />
+            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -48,31 +57,26 @@ const SignUp = () => {
                 name="password"
                 onBlur={handleBlur}
               />
-              <label className="label">
-                <Link
-                  to="/forget-password"
-                  className="label-text-alt link link-hover"
-                >
-                  Forgot password?
-                </Link>
-              </label>
             </div>
             <div className="form-control mt-6">
               <input
                 type="submit"
                 className="btn btn-success text-white"
-                value="Login"
+                value="Sign Up"
               />
             </div>
           </div>
           <p className="text-center mb-4">
-            New to CarzBd?{" "}
-            <Link to="/sign-up" className="text-green-400">
-              Sign Up{" "}
+            Already have account?{" "}
+            <Link to="/login" className="text-green-400">
+              Login{" "}
             </Link>
             now{" "}
           </p>
         </form>
+        <div className="text-center lg:text-left w-1/2">
+          <img src="https://i.ibb.co/XXvbnc6/Mobile-login-bro.png" alt="" />
+        </div>
       </div>
     </div>
   );
